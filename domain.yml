@@ -5,6 +5,8 @@ intents:
 - greet
 - inform
 - subscribe
+entities:
+- email
 slots:
   email:
     type: text
@@ -22,10 +24,9 @@ responses:
   - text: |
       Check your inbox at {email} in order to finish subscribing to the newsletter!
   - text: You're all set! Check your inbox at {email} to confirm your subscription.
-actions:
-- utter_greet
-- utter_subscribed
 forms:
   newsletter_form:
     required_slots:
-    - email
+      email:
+      - entity: email
+        type: from_entity
